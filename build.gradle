@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'net.ltgt.apt' version '0.3'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+
+    //required for MapStruct snapshots only
+    maven {
+        url 'https://oss.sonatype.org/content/groups/public'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    compile 'org.mapstruct:mapstruct-jdk8:1.0.0.Final'
+    apt 'org.mapstruct:mapstruct-processor:1.0.0.Final'
+    testCompile('junit:junit:4.12')
+}
